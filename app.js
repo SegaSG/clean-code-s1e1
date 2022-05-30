@@ -5,10 +5,10 @@
 // Break things down into smaller steps and take each step at a time.
 // Event handling, user interaction is what starts the code execution.
 
-var taskInput = document.getElementById("new-task"); // Add a new task.
-var addButton = document.getElementsByTagName("button")[0]; // first button
-var incompleteTaskHolder = document.getElementById("incomplete-tasks"); // ul of #incomplete-tasks
-var completedTasksHolder = document.getElementById("completed-tasks"); // completed-tasks
+var taskInput = document.querySelector(".new-task-input"); // Add a new task.
+var addButton = document.querySelector(".add-button"); // first button
+var incompleteTaskHolder = document.querySelector("#incomplete-tasks"); // ul of #incomplete-tasks
+var completedTasksHolder = document.querySelector("#completed-tasks"); // completed-tasks
 
 //New task list item
 var createNewTaskElement = function (taskString) {
@@ -25,17 +25,20 @@ var createNewTaskElement = function (taskString) {
   var deleteButton = document.createElement("button"); // delete button
   var deleteButtonImg = document.createElement("img"); // delete button image
 
+  listItem.className = "task-list-item";
   label.innerText = taskString;
-  label.className = 'task';
+  label.className = "task-label";
 
   // Each elements, needs appending
   checkBox.type = "checkbox";
+  checkBox.className="task-checkbox";
   editInput.type = "text";
-  editInput.className = "task";
+  editInput.className = "task-input";
   editButton.innerText = "Edit"; // innerText encodes special characters, HTML does not.
-  editButton.className = "edit";
-  deleteButton.className = "delete";
-  deleteButtonImg.src = './remove.svg';
+  editButton.className = "btn edit-button";
+  deleteButton.className = "btn del-button";
+  deleteButtonImg.src = "./remove.svg";
+  deleteButtonImg.className='del-button-img';
   deleteButton.appendChild(deleteButtonImg);
   // and appending.
   listItem.appendChild(checkBox);
@@ -62,9 +65,9 @@ var editTask = function () {
   console.log("Edit Task...");
   console.log("Change 'edit' to 'save'");
   var listItem = this.parentNode;
-  var editInput = listItem.querySelector('input[type=text]');
-  var label = listItem.querySelector("label");
-  var editBtn = listItem.querySelector(".edit");
+  var editInput = listItem.querySelector(".task-input");
+  var label = listItem.querySelector(".task-label");
+  var editBtn = listItem.querySelector(".edit-button");
   var containsClass = listItem.classList.contains("edit-mode");
   //If class of the parent is .edit-mode
   if (containsClass) {
@@ -105,7 +108,7 @@ var taskIncomplete = function () {
   // Append the task list item to the #incompleteTasks.
   var listItem = this.parentNode;
   incompleteTaskHolder.appendChild(listItem);
-  bindTaskEvents(listItem,taskCompleted);
+  bindTaskEvents(listItem, taskCompleted);
 }
 
 var ajaxRequest = function () {
@@ -115,15 +118,15 @@ var ajaxRequest = function () {
 // The glue to hold it all together.
 // Set the click handler to the addTask function.
 addButton.onclick = addTask;
-addButton.addEventListener("click",addTask);
-addButton.addEventListener("click",ajaxRequest);
+addButton.addEventListener("click", addTask);
+addButton.addEventListener("click", ajaxRequest);
 
-var bindTaskEvents = function (taskListItem,checkBoxEventHandler) {
+var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
   console.log("bind list item events");
   // select ListItems children
-  var checkBox = taskListItem.querySelector("input[type=checkbox]");
-  var editButton = taskListItem.querySelector("button.edit");
-  var deleteButton = taskListItem.querySelector("button.delete");
+  var checkBox = taskListItem.querySelector(".task-checkbox");
+  var editButton = taskListItem.querySelector(".edit-button");
+  var deleteButton = taskListItem.querySelector(".del-button");
   // Bind editTask to edit button.
   editButton.onclick = editTask;
   // Bind deleteTask to delete button.
@@ -136,13 +139,13 @@ var bindTaskEvents = function (taskListItem,checkBoxEventHandler) {
 // for each list item
 for (var i = 0; i < incompleteTaskHolder.children.length; i++){
   //bind events to list items chldren(tasksCompleted)
-  bindTaskEvents (incompleteTaskHolder.children[i],taskCompleted);
+  bindTaskEvents (incompleteTaskHolder.children[i], taskCompleted);
 }
 
 // cycle over completedTasksHolder ul list items
 for (var i = 0; i < completedTasksHolder.children.length; i++){
   // bind events to list items chldren(tasksIncompleted)
-  bindTaskEvents (completedTasksHolder.children[i],taskIncomplete);
+  bindTaskEvents (completedTasksHolder.children[i], taskIncomplete);
 }
 
 // Issues with usability don't get seen until they are in front of a human tester.

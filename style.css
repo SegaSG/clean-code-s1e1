@@ -12,11 +12,11 @@
   text-align: right;
 }
 
-.header-image {
+.header__image {
   width: 100%;
 }
 
-.header-info {
+.header__info {
   font-family: fantasy, cursive;
 }
 
@@ -34,19 +34,20 @@
   margin: 0 auto 0;
 }
 
-.task {
+.task-input,
+.task-label {
   width: 56%;
   display: inline-block;
   flex-grow: 1;
 }
 
-.task-row-wrapp {
+.add-section__content {
   display: flex;
 }
 
 .task-list {
   margin: 0;
-  padding: 0px;
+  padding: 0;
 }
 
 .task-list-item,
@@ -62,7 +63,7 @@
 
 .btn {
   background: none;
-  border: 0px;
+  border: 0;
   color: #888;
   font-size: 15px;
   width: 60px;
@@ -75,8 +76,7 @@
 }
 
 /* Heading */
-.task-title,
-.new-task-label {
+.title {
   color: #333;
   font-weight: 700;
   font-size: 15px;
@@ -104,12 +104,12 @@
 }
 
 /* New Task */
-.new-task-label {
+.add-section__title {
   display: block;
   margin: 0 0 20px;
 }
 
-.new-task-input {
+.add-section__content-text {
   width: 318px;
 }
 

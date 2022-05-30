@@ -5,8 +5,8 @@
 // Break things down into smaller steps and take each step at a time.
 // Event handling, user interaction is what starts the code execution.
 
-var taskInput = document.querySelector(".new-task-input"); // Add a new task.
-var addButton = document.querySelector(".add-button"); // first button
+var taskInput = document.querySelector(".add-section__content-text"); // Add a new task.
+var addButton = document.querySelector(".add-section__content-btn"); // first button
 var incompleteTaskHolder = document.querySelector("#incomplete-tasks"); // ul of #incomplete-tasks
 var completedTasksHolder = document.querySelector("#completed-tasks"); // completed-tasks
 
@@ -31,14 +31,14 @@ var createNewTaskElement = function (taskString) {
 
   // Each elements, needs appending
   checkBox.type = "checkbox";
-  checkBox.className="task-checkbox";
+  checkBox.className ="task-checkbox";
   editInput.type = "text";
   editInput.className = "task-input";
   editButton.innerText = "Edit"; // innerText encodes special characters, HTML does not.
   editButton.className = "btn edit-button";
   deleteButton.className = "btn del-button";
   deleteButtonImg.src = "./remove.svg";
-  deleteButtonImg.className='del-button-img';
+  deleteButtonImg.className = "del-button-img";
   deleteButton.appendChild(deleteButtonImg);
   // and appending.
   listItem.appendChild(checkBox);

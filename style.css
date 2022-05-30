@@ -138,7 +138,7 @@
 }
 
 .task-list-item .task-input {
-  width: 226px
+  width: 226px;
 }
 
 .del-button-img {
@@ -159,12 +159,12 @@
 
 /* Edit Task */
 .task-list-item .task-input {
-  display: none
+  display: none;
 }
 
 .task-list-item.edit-mode .task-input {
   display: inline-block;
-  width: 224px
+  width: 224px;
 }
 
 .task-list-item.edit-mode .task-label {

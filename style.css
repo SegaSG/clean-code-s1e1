@@ -16,7 +16,8 @@
   width: 100%;
 }
 
-.header .header-info {
+.header
+.header-info {
   font-family: fantasy, cursive;
 }
 
@@ -49,7 +50,8 @@
   padding: 0px;
 }
 
-.task-list-item, .task-title {
+.task-list-item,
+.task-title {
   list-style: none;
 }
 
